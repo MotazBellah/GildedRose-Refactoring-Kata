@@ -18,4 +18,5 @@ def test_gilded_rose_approvals():
     verify(answer)
 
 if __name__ == "__main__":
-    test_gilded_rose_approvals()
+    #test_gilded_rose_approvals()
+    pass
