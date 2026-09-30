@@ -63,10 +63,20 @@ class Standard(Processor):
             if item.quality > 0:
                 item.quality -= 1
 
+class Conjured(Processor):
+    def update_quality(self, item: Item) -> None:
+        item.quality = max(item.quality - 2, 0)
+
+        item.sell_in = item.sell_in - 1
+
+        if item.sell_in < 0:
+            item.quality = max(item.quality - 2, 0)
+
 registery : dict[str, Processor] = {
     "Aged Brie": AgedBrie,
     "Sulfuras, Hand of Ragnaros": Sulfuras,
-    "Backstage passes to a TAFKAL80ETC concert": Backstage
+    "Backstage passes to a TAFKAL80ETC concert": Backstage,
+    "Conjured": Conjured,
 }
 
 class GildedRose:
